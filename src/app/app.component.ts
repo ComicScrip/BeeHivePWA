@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Hive } from './Hive';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public hive: Hive;
+  
+  constructor() {
+    this.hive = new Hive(32.5, false, 29, 17, new Date());
+  }
 }
