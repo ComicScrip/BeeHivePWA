@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'BeeHive';
+
+  chartType:string = "line";
+  onSetChartBarType() {
+    this.chartType = "bar";
+  };
+
 }

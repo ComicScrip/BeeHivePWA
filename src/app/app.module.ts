@@ -3,14 +3,14 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import {LineChart} from "./LineChart.component";
+import {Chart} from "./chart.component";
 import { ChartsModule } from 'ng2-charts';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChart
+    Chart
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,9 @@
 <div style="text-align:center">
   <h1>
     {{ title }}
-    <line-chart></line-chart>
+    <button (click)="onSetChartBarType()" >bar type</button>
+
+    <chart [chartType]="chartType"></chart>
   </h1>
 </div>
 
