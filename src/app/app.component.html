@@ -1,10 +1,31 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<div>
   <h1>
     {{ title }}
-    <button (click)="onSetChartBarType()" >bar type</button>
-
-    <chart [chartType]="chartType"></chart>
   </h1>
-</div>
 
+  <button (click)="onSetChartBarType()" >bar type</button>
+  <button (click)="onSetChartBarType()" >bar type</button>
+  <button (click)="onSetChartBarType()" >bar type</button>
+
+  <div>
+    <h3>
+      Beehive information
+    </h3>
+  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="DateFrom"></label>
+      <input type="DateFrom" class="form-control" id="DateTo" placeholder="Date from">
+      <label for="DateTo"></label>
+      <input type="DateTo" class="form-control" id="DateFrom" placeholder="Date to">
+    </div>
+  </form>
+
+  <chart
+    [chartType]="chartType"
+    [chartLabels]="chartLabels"
+    [chartData]="chartData"
+  ></chart>
+</div>
