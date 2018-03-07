@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Hive } from './Models/Hive';
 import { BeeDataService } from './services/bee-data.service';
 import { Observable } from 'rxjs/Rx';
+import { timer } from 'rxjs/observable/timer';
 
 @Component({
   selector: 'app-root',
@@ -29,8 +30,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    this.beedataService.getData().subscribe(da => console.log(da));
-    //this.onTempClick()
+    let timer = Observable.timer(2000,3000);
+    timer.subscribe(t=> {
+        this.getDatas();
+    });
+    
   }
 
   onTempClick(){
