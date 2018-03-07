@@ -15,29 +15,32 @@ export class AppComponent {
 
   chartType: string = "bar";
 
-  chartData:any = {
+  chartData: any = {
     labels: [],
     datasets: []
   }
 
-  hatchOpen:boolean = false;
+  hatchOpen: boolean = false;
 
   public myHive: Hive;
-  public connection : boolean;
+  public connection: boolean;
 
   constructor(private beedataService: BeeDataService) {
 
   }
 
   ngOnInit() {
-    let timer = Observable.timer(2000,3000);
-    timer.subscribe(t=> {
+    let timer = Observable.timer(2000, 3000);
+    timer.subscribe(t => {
+      this.connection = navigator.onLine;
+      if (this.connection) {
         this.getDatas();
+      }
     });
-    
+
   }
 
-  onTempClick(){
+  onTempClick() {
     this.chartType = "bar"
     this.chartData = {
       labels: ['14:00', '15:00', '16:00'],
@@ -46,13 +49,13 @@ export class AppComponent {
           label: 'Temperature',
           backgroundColor: '#cc0005',
           borderColor: '#b30027',
-          data: [ 90, 110, 100]
+          data: [90, 110, 100]
         }
       ]
     }
   }
 
-  onVibrationClick(){
+  onVibrationClick() {
     this.chartType = "line";
     this.chartData = {
       labels: ['17:00', '18:00', '19:00'],
@@ -61,7 +64,7 @@ export class AppComponent {
           label: 'Temperature',
           backgroundColor: '#9CCC65',
           borderColor: '#7CB342',
-          data: [ 90, 80, 100]
+          data: [90, 80, 100]
         }
       ]
     }
@@ -77,9 +80,9 @@ export class AppComponent {
 
 
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+  navigator.serviceWorker.register('/service-worker.js').then(function (registration) {
     console.log('ServiceWorker registration successful!');
-  }).catch(function(err) {
+  }).catch(function (err) {
     console.log('ServiceWorker registration failed: ', err);
   });
 }
