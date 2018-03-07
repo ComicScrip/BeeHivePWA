@@ -11,9 +11,13 @@
   </h3>
 </div>
 <div class="container">
-    <form class="form-horizontal" role="form">
-        <div class="form-group">
-            <p>Is open :{{Hive.hatchOpen}}</p>
+    <form class="form-horizontal" role="form"> 
+        <div class="form-group form-inline">       
+            <span>Is open    </span>
+            <label class="switch">             
+              <input type="checkbox">
+              <span class="slider round"></span>
+            </label>         
         </div>
         <div class="form-group">
             <button type="button" class="btn btn-default">Temperature</button>
