@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Hive } from './Models/Hive';
+import {BeeDataService} from './services/bee-data.service';
 
 @Component({
   selector: 'app-root',
