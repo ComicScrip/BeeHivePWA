@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Http, HttpModule} from "@angular/http";
 import { NgModule } from '@angular/core';
-
+import { BeeDataService } from './services/bee-data.service';
 
 import { AppComponent } from './app.component';
 import {Chart} from "./chart.component";
@@ -14,9 +15,10 @@ import { ChartsModule } from 'ng2-charts';
   ],
   imports: [
     BrowserModule,
-    ChartsModule
+    ChartsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [BeeDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
