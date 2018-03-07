@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BeeDataService } from './services/bee-data.service';
+import {boostrap} from 'bootstrap/';
 
 @Component({
   selector: 'app-root',
