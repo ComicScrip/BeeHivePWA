@@ -1,0 +1,9 @@
+{
+  "name": "BeeHive",
+  "short_name": "BH",
+  "icons": [{
+        "src": "beecon.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }]
+}

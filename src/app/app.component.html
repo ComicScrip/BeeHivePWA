@@ -1,27 +1,17 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div>
-  <h1>
-    {{ title }}
-  </h1>
-
-  <button (click)="onSetChartBarType()" >bar type</button>
-  <button (click)="onSetChartBarType()" >bar type</button>
-  <button (click)="onSetChartBarType()" >bar type</button>
-
-  <div>
-    <h3>
-      Beehive information
-    </h3>
-  </div>
-
-  <form>
-    <div class="form-group">
-      <label for="DateFrom"></label>
-      <input type="DateFrom" class="form-control" id="DateTo" placeholder="Date from">
-      <label for="DateTo"></label>
-      <input type="DateTo" class="form-control" id="DateFrom" placeholder="Date to">
-    </div>
-  </form>
+<div class="container">
+    <h1>
+      {{ title }}
+    </h1>
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <p>Is open :{{Hive.hatchOpen}}</p>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-default">Temperature</button>
+            <button type="button" class="btn btn-default">Vibration</button>
+        </div>
+        <button type="button" class="btn btn-success">Validate</button>
+    </form>
 
   <chart
     [chartType]="chartType"
