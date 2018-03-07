@@ -21,6 +21,7 @@
     "@angular/platform-browser": "^5.2.0",
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
+    "@angular/service-worker": "^5.2.7",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.0.0",
     "bootstrap-toggle": "^2.2.2",
