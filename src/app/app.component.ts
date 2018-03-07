@@ -8,7 +8,18 @@ import { Observable } from 'rxjs/Rx';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+
+export class AppComponent {
+  title = 'BeeHive';
+
+  chartType: string = "bar";
+
+  chartData:any = {
+    labels: [],
+    datasets: []
+  }
+
+  hatchOpen:boolean = false;
 
   public myHive: Hive;
   public connection : boolean;
@@ -18,13 +29,38 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    let timer = Observable.timer(2000, 5000);
-    timer.subscribe(t => {
-      this.connection = navigator.onLine;
-      if (navigator.onLine) {
-        this.getDatas();
-      }
-    });
+    this.beedataService.getData().subscribe(da => console.log(da));
+    //this.onTempClick()
+  }
+
+  onTempClick(){
+    this.chartType = "bar"
+    this.chartData = {
+      labels: ['14:00', '15:00', '16:00'],
+      datasets: [
+        {
+          label: 'Temperature',
+          backgroundColor: '#cc0005',
+          borderColor: '#b30027',
+          data: [ 90, 110, 100]
+        }
+      ]
+    }
+  }
+
+  onVibrationClick(){
+    this.chartType = "line";
+    this.chartData = {
+      labels: ['17:00', '18:00', '19:00'],
+      datasets: [
+        {
+          label: 'Temperature',
+          backgroundColor: '#9CCC65',
+          borderColor: '#7CB342',
+          data: [ 90, 80, 100]
+        }
+      ]
+    }
   }
 
   public getDatas() {
@@ -33,4 +69,13 @@ export class AppComponent implements OnInit {
       this.myHive = new Hive(da.temperature, da.hatchOpen, da.vibration, da.soundActivity, da.dateTime);
     });
   }
+}
+
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+    console.log('ServiceWorker registration successful!');
+  }).catch(function(err) {
+    console.log('ServiceWorker registration failed: ', err);
+  });
 }

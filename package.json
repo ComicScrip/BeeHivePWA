@@ -24,11 +24,15 @@
     "@angular/service-worker": "^5.2.7",
     "boostrap": "^2.0.0",
     "bootstrap": "^4.0.0",
+    "chart.js": "^2.7.2",
     "bootstrap-toggle": "^2.2.2",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
+    "ng2-charts": "^1.6.0",
     "popper.js": "^1.12.9",
+    "primeng": "^5.2.1",
     "rxjs": "^5.5.6",
+    "sw-toolbox": "^3.6.0",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {
