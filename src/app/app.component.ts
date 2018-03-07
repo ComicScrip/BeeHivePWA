@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BeeDataService } from './services/bee-data.service';
-import {boostrap} from 'bootstrap/';
+import { Hive } from './Models/Hive';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +9,16 @@ import {boostrap} from 'bootstrap/';
 })
 export class AppComponent implements OnInit {
 
-  constructor(private beedataService: BeeDataService) {
+  public myHive: Hive;
 
+  constructor(private beedataService: BeeDataService) {
+    this.beedataService.getData().subscribe(da => {
+      console.log(da);
+      this.myHive = new Hive(da.temperature, da.hatchOpen, da.vibration, da.soundActivity, da.dateTime);
+    });
   }
+
   ngOnInit() {
-    this.beedataService.getData().subscribe(da => console.log(da));
+    
   }
 }

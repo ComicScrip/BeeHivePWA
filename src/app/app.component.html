@@ -11,7 +11,11 @@
 <div class="container">
     <form class="form-horizontal" role="form">
         <div class="form-group">
-            <p>Is open :{{Hive.hatchOpen}}</p>
+            <p>Temperature :{{myHive?.temperature}}</p>
+            <p>Is open :{{myHive?.hatchOpen}}</p>
+            <p>Vibration :{{myHive?.vibration}}</p>
+            <p>SoundActivity :{{myHive?.soundActivity}}</p>
+            <p>Date :{{myHive?.dateTime}}</p>
         </div>
         <div class="form-group">
             <button type="button" class="btn btn-default">Temperature</button>
