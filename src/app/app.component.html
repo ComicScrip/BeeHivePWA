@@ -1,16 +1,22 @@
-
-<h1>BeeHive</h1>
-
-<h3>Hive n°3</h3>
-<table style="width:100%">
-    <tr>
-        <td>Temperature</td>
-        <td>Vibration</td>
-        <td>Sound Activity</td>
-    </tr>
-    <tr>
-        <td>{{hive.temperature}}</td>
-        <td>{{hive.vibration}}</td>
-        <td>{{hive.soundActivity}}</td>
-    </tr>
-</table>
+<div>
+  <h1>
+    BeeHive
+  </h1>
+</div>
+<div>
+  <h3>
+    Beehive information
+  </h3>
+</div>
+<div class="container">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <p>Is open :{{Hive.hatchOpen}}</p>
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-default">Temperature</button>
+            <button type="button" class="btn btn-default">Vibration</button>
+        </div>
+        <button type="button" class="btn btn-success">Validate</button>
+    </form>
+</div>
