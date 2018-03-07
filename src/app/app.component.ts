@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { BeeDataService } from './services/bee-data.service';
+import { Component } from '@angular/core';
 import { Hive } from './Models/Hive';
 
 @Component({
