@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Hive } from './Models/Hive';
 import { BeeDataService } from './services/bee-data.service';
-import {boostrap} from 'bootstrap/';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,9 @@ export class AppComponent {
   }
 
   hatchOpen:boolean = false;
+
+  public myHive: Hive;
+  public connection : boolean;
 
   constructor(private beedataService: BeeDataService) {
 
@@ -57,6 +61,13 @@ export class AppComponent {
         }
       ]
     }
+  }
+
+  public getDatas() {
+    this.beedataService.getData().subscribe(da => {
+      console.log(da);
+      this.myHive = new Hive(da.temperature, da.hatchOpen, da.vibration, da.soundActivity, da.dateTime);
+    });
   }
 }
 

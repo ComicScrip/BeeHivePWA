@@ -24,6 +24,7 @@
     "boostrap": "^2.0.0",
     "bootstrap": "^4.0.0",
     "chart.js": "^2.7.2",
+    "bootstrap-toggle": "^2.2.2",
     "core-js": "^2.4.1",
     "jquery": "^3.3.1",
     "ng2-charts": "^1.6.0",
