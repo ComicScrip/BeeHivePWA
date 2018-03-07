@@ -8,9 +8,10 @@ import {Component, Input} from '@angular/core';
 export class Chart {
   @Input() chartType:string = "bar" ;
   @Input() chartData:Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [], label: ''},
   ];
-  @Input() public chartLabels:Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  @Input() chartLabels:Array<any> = [];
+
 
   public chartOptions:any = {
     responsive: true

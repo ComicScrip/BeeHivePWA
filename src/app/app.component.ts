@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BeeDataService } from './services/bee-data.service';
 import {boostrap} from 'bootstrap/';
+import {BaseChartDirective} from "ng2-charts";
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,10 @@ export class AppComponent {
 
   chartType: string = "bar";
   chartData: Array<any> = [
-    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [], label: ''},
   ];
-  chartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
+  chartLabels: Array<any> = [];
+  hatchOpen:boolean = false;
 
   constructor(private beedataService: BeeDataService) {
 
@@ -24,9 +25,27 @@ export class AppComponent {
 
   ngOnInit() {
     this.beedataService.getData().subscribe(da => console.log(da));
+    //this.onTempClick()
   }
 
-  onSetChartBarType() {
-    this.chartType = "bar";
-  };
+  onTempClick(){
+    setTimeout(() => {
+      this.chartType = "bar";
+      this.chartData = [{
+        data: [1, 2, 3],
+        label: "Temperature"
+      }];
+      this.chartLabels = ['17:00', '18:00', '19:00'];
+    }, 0)
+  }
+
+  onVibrationClick(){
+    this.chartType = "line";
+    this.chartData = [{
+      data: [6, 5, 6],
+      label: "Vibration level"
+    }];
+    this.chartLabels = ['14:00', '15:00', '16:00'];
+  }
 }
+
