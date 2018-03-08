@@ -26,7 +26,7 @@ export class AppComponent {
   hatchOpen: boolean = false;
 
   public myHive: Hive;
-  public connection: boolean;
+  public connection: boolean = undefined;
 
   constructor(private beedataService: BeeDataService) {
 
@@ -40,7 +40,6 @@ export class AppComponent {
         this.getDatas();
       }
     });
-
   }
 
   dataToDisplay = "temperature"

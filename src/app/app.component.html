@@ -1,4 +1,6 @@
 <div class="container">
+  <div *ngIf="connection !== undefined && connection" class="banner online">You are online</div>
+  <div *ngIf="connection !== undefined && !connection" class="banner offline">You are offline</div>
   <h1>
     {{ title }}
   </h1>
@@ -15,9 +17,10 @@
             <button (click)="onVibrationClick()" type="button" class="btn btn-default">Vibration</button>
         </div>
     </form>
-
-  <chart
-    [type]="chartType"
-    [data]="chartData"
-  ></chart>
+  <div class="chart">
+    <chart
+      [type]="chartType"
+      [data]="chartData"
+    ></chart>
+  </div>
 </div>
