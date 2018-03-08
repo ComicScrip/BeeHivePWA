@@ -1,4 +1,3 @@
-// src/ngsw-config.json
 {
     "index": "/index.html",
     "assetGroups": [{
