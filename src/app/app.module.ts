@@ -18,7 +18,7 @@ import { environment } from '../environments/environment';
     ChartModule,
     BrowserModule,
     HttpModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})  ],
+    ServiceWorkerModule.register('/ngsw-worker.js')  ],
   providers: [BeeDataService],
   bootstrap: [AppComponent]
 })
