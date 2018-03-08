@@ -80,6 +80,8 @@ export class AppComponent {
   public getDatas() {
     this.beedataService.getData().subscribe(da => {
       this.myHive = new Hive(da.temperature, da.hatchOpen, da.vibration, da.soundActivity, da.dateTime);
+      console.log('receiving hive status : ', da);
+      this.hatchOpen = da.hatchOpen;
       this.dataHistory.temperature = [...this.dataHistory.temperature, da.temperature];
       this.dataHistory.vibrations = [...this.dataHistory.vibrations, da.vibration];
       this.dataHistory.timestamps = [...this.dataHistory.timestamps, moment(da.dateTime).format('HH:mm:ss')]
