@@ -12,7 +12,7 @@
         "favicon.ico",
         "manifest.json",
         "beecon.png",
-        "service-worker.js"
+        "ngsw-worker.js"
       ],
       "index": "index.html",
       "main": "main.ts",
