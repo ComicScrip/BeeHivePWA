@@ -33,7 +33,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    let timer = Observable.timer(2000, 5000);
+    let timer = Observable.timer(2000, 10000);
     timer.subscribe(t => {
       this.connection = navigator.onLine;
       if (this.connection) {
