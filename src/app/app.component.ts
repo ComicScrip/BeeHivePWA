@@ -4,6 +4,9 @@ import { BeeDataService } from './services/bee-data.service';
 import { Observable } from 'rxjs/Rx';
 import { timer } from 'rxjs/observable/timer';
 
+import * as moment from 'moment'
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -30,7 +33,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    let timer = Observable.timer(2000, 3000);
+    let timer = Observable.timer(2000, 5000);
     timer.subscribe(t => {
       this.connection = navigator.onLine;
       if (this.connection) {
@@ -40,40 +43,50 @@ export class AppComponent {
 
   }
 
-  onTempClick() {
-    this.chartType = "bar"
+  dataToDisplay = "temperature"
+
+  updateChartData() {
+    const displayTmp = this.dataToDisplay === "temperature"
+    this.chartType = displayTmp ? "bar" : "line"
     this.chartData = {
-      labels: ['14:00', '15:00', '16:00'],
+      labels: this.dataHistory.timestamps,
       datasets: [
         {
-          label: 'Temperature',
-          backgroundColor: '#cc0005',
-          borderColor: '#b30027',
-          data: [90, 110, 100]
+          label: displayTmp ? 'Temperature' : 'Vibrations',
+          backgroundColor: displayTmp ? '#cc0005' : '#9CCC65',
+          borderColor: displayTmp ? '#b30027' : '#7CB342',
+          data: displayTmp ? this.dataHistory.temperature : this.dataHistory.vibrations
         }
       ]
     }
   }
 
+  onTempClick() {
+    this.dataToDisplay = "temperature";
+    this.updateChartData()
+  }
+
   onVibrationClick() {
-    this.chartType = "line";
-    this.chartData = {
-      labels: ['17:00', '18:00', '19:00'],
-      datasets: [
-        {
-          label: 'Temperature',
-          backgroundColor: '#9CCC65',
-          borderColor: '#7CB342',
-          data: [90, 80, 100]
-        }
-      ]
-    }
+    this.dataToDisplay = "vibrations";
+    this.updateChartData()
+  }
+
+  dataHistory = {
+    temperature: [],
+    vibrations: [],
+    timestamps: []
   }
 
   public getDatas() {
     this.beedataService.getData().subscribe(da => {
-      console.log(da);
       this.myHive = new Hive(da.temperature, da.hatchOpen, da.vibration, da.soundActivity, da.dateTime);
+      console.log('receiving hive status : ', da);
+      this.hatchOpen = da.hatchOpen;
+      this.dataHistory.temperature = [...this.dataHistory.temperature, da.temperature];
+      this.dataHistory.vibrations = [...this.dataHistory.vibrations, da.vibration];
+      this.dataHistory.timestamps = [...this.dataHistory.timestamps, moment(da.dateTime).format('HH:mm:ss')]
+      console.log('history updated : ', this.dataHistory);
+      this.updateChartData();
     });
   }
 }
